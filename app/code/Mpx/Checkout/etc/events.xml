@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mpx Software.
+ *
+ * @category  Mpx
+ * @package   Mpx_Checkout
+ * @author    Mpx
+ */
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="controller_action_predispatch_checkout_index_index">
+        <observer name="mpx_check_cart_add_product_complete" instance="Mpx\Checkout\Observer\CheckMultiSellerPageCheckout" />
+    </event>
+    <event name="controller_action_postdispatch_checkout_cart_index">
+        <observer name="mpx_check_seller_display_cart" instance="Mpx\Checkout\Observer\CheckMultiSellerPageShoppingCart"/>
+    </event>
+    <event name="checkout_submit_before">
+        <observer name="mpx_check_seller_submit_before" instance="Mpx\Checkout\Observer\CheckSellerCheckoutSubmit"/>
+    </event>
+</config>
